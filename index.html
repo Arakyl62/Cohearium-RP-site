@@ -1,25 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-    <h1>COHEARIUM</h1>
-    <p>Une faille entre les mondes.</p>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cohearium | Un portail entre les mondes</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 
 <body>
-    <nav>
-        <a href="#">Accueil</a>
-        <a href="#">Lore</a>
-        <a href="#">Roleplay</a>
-        <a href="#">Communauté</a>
-    </nav>
-    <header>
-        <h1>Cohearium</h1>
-        <p>Bienvenue dans mes univers.</p>
+    <header class="site-header" id="accueil">
+        <nav class="main-menu" aria-label="Menu principal">
+            <a class="active" href="#accueil">Accueil</a>
+            <a href="#lore">Lore</a>
+            <a href="#roleplay">Roleplay</a>
+            <a href="#communaute">Communauté</a>
+        </nav>
+
+        <main class="hero">
+            <p class="hero-kicker">Le point de convergence</p>
+            <h1>COHEARIUM</h1>
+            <p class="hero-subtitle">« Un portail entre les mondes. »</p>
+            <p class="hero-intro">Au-delà des étoiles, plusieurs univers attendent d'être découverts.</p>
+
+            <div class="portal-actions" aria-label="Accéder aux sections principales">
+                <a class="portal-button portal-button-primary" href="#univers"><span>Explorer les univers</span><span class="button-arrow" aria-hidden="true">↗</span></a>
+                <a class="portal-button" href="#lore"><span>Découvrir le lore</span><span class="button-arrow" aria-hidden="true">↗</span></a>
+                <a class="portal-button" href="#roleplay"><span>Entrer dans le roleplay</span><span class="button-arrow" aria-hidden="true">↗</span></a>
+            </div>
+
+            <a class="scroll-cue" href="#univers" aria-label="Faire défiler vers les univers"><span class="scroll-line"></span><span>Faire défiler</span></a>
+        </main>
     </header>
 
-    <main>
-        <h2>Mes univers</h2>
-    </main>
-
+    <section class="content-section" id="univers"><p class="section-label">01 / Portail</p><h2>Des mondes à la lisière du réel.</h2></section>
+    <section class="content-section" id="lore"><p class="section-label">02 / Lore</p><h2>Chaque monde possède son histoire.</h2></section>
+    <section class="content-section" id="roleplay"><p class="section-label">03 / Roleplay</p><h2>Écrivez la suite du voyage.</h2></section>
+    <section class="content-section" id="communaute"><p class="section-label">04 / Communauté</p><h2>Les voyageurs se retrouvent ici.</h2></section>
 </body>
 </html>
