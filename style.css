@@ -1,5 +1,8 @@
 body {
-    background-color: #050510;
+    background-image: url("galaxy.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     color: white;
     font-family: Arial, sans-serif;
 }
