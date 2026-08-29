@@ -243,16 +243,29 @@
 	background: #050912;
 }
 
+.lore-header,
+.vixy-header,
+.system-header {
+	padding-top: 0;
+	background-position: center 26px;
+}
+
+.lore-header .main-menu,
+.vixy-header .main-menu,
+.system-header .main-menu {
+	margin-top: 26px;
+}
+
 .lore-header {
 	min-height: 360px;
 	padding-bottom: 70px;
-	background: linear-gradient(180deg, rgba(3, 6, 16, 0.42), #050912), url('galaxy.jpg') center 42% / cover no-repeat;
+	background: linear-gradient(180deg, rgba(3, 6, 16, 0) 0, rgba(3, 6, 16, 0.42) 26px, #050912 100%), url('galaxy.jpg') center 26px / cover no-repeat;
 }
 
 .lore-intro {
 	width: min(1160px, calc(100% - 64px));
 	margin: 0 auto;
-	padding-top: 74px;
+	padding-top: 94px;
 }
 
 .lore-intro h1 {
@@ -391,7 +404,7 @@
 .vixy-header {
 	min-height: 440px;
 	padding-bottom: 80px;
-	background: linear-gradient(180deg, rgba(3, 6, 16, 0.42), #050912), url('vixy.jpg') center / cover no-repeat;
+	background: linear-gradient(180deg, rgba(3, 6, 16, 0) 0, rgba(3, 6, 16, 0.42) 26px, #050912 100%), url('vixy.jpg') center 26px / cover no-repeat;
 }
 
 .vixy-heading,
@@ -401,7 +414,7 @@
 }
 
 .vixy-heading {
-	padding-top: 88px;
+	padding-top: 114px;
 }
 
 .vixy-heading h1 {
@@ -641,7 +654,7 @@
 .system-header {
 	min-height: 440px;
 	padding-bottom: 80px;
-	background: linear-gradient(180deg, rgba(3, 6, 16, 0.42), #050912), url('vixy.jpg') center / cover no-repeat;
+	background: linear-gradient(180deg, rgba(3, 6, 16, 0) 0, rgba(3, 6, 16, 0.42) 26px, #050912 100%), url('vixy.jpg') center 26px / cover no-repeat;
 }
 
 .system-content {
@@ -656,6 +669,7 @@
 	width: calc(100% - 268px);
 	margin-left: 228px;
 	margin-right: 0;
+	padding-top: 114px;
 }
 
 .myrr-article {
