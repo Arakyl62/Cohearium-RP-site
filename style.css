@@ -1,3 +1,7 @@
+/* =========================
+   GLOBAL / COMMUN À TOUTES LES PAGES
+   ========================= */
+
 :root {
 	--ink: #f4f0ff;
 	--muted: #b8b0ce;
@@ -6,14 +10,72 @@
 	--night: #080714;
 }
 
-/* Homepage portal layout. Everything uses local system fonts for easy offline editing. */
+html, body {
+	margin: 0;
+}
+
+body {
+	background: #050912;
+}
+
+/* Bloc du header partagé : position du menu sur toutes les pages */
+.page-header {
+	position: relative;
+	z-index: 2;
+	width: min(1160px, calc(100% - 64px));
+	margin: 26px auto 0;
+}
+
+/* Menu principal commun : navigation du site */
+.main-menu {
+	position: relative;
+	z-index: 1;
+	padding: 18px 30px;
+	justify-content: center;
+	gap: clamp(28px, 6vw, 82px);
+	border: 1px solid rgba(210, 228, 255, 0.17);
+	border-radius: 999px;
+	background: rgba(9, 16, 32, 0.3);
+	backdrop-filter: blur(8px);
+}
+
+.main-menu a {
+	padding: 6px 0;
+	color: #b4bdd0;
+	font-size: 12px;
+	letter-spacing: 0.16em;
+	text-transform: uppercase;
+}
+
+.main-menu a::after {
+	background: #a9d8ff;
+}
+
+.main-menu a:hover,
+.main-menu a.active {
+	color: #f4f7ff;
+	text-shadow: 0 0 16px rgba(169, 216, 255, 0.8);
+}
+
+/* Shared reset for page headers across Lore, Vixy and Système */
+.lore-header,
+.vixy-header,
+.system-header {
+	padding-top: 0;
+	background: transparent;
+}
+
+/* =========================
+   PAGE D’ACCUEIL
+   ========================= */
+
+/* Hero de la page d'accueil : fond galaxie + titre principal */
 .site-header {
 	min-height: 100vh;
-	min-height: 720px;
 	display: flex;
 	flex-direction: column;
 	overflow: hidden;
-	background: linear-gradient(180deg, rgba(3, 6, 16, 0.5), rgba(3, 6, 16, 0.2) 35%, rgba(3, 6, 16, 0.92)), url('galaxy.png') center / cover no-repeat, url('galaxy.jpg') center / cover no-repeat;
+	background: linear-gradient(180deg, rgba(3, 6, 16, 0.5), rgba(3, 6, 16, 0.2) 35%, rgba(3, 6, 16, 0.92)), url('galaxy.jpg') center / cover no-repeat;
 }
 
 .site-header::after {
@@ -29,10 +91,18 @@
 	margin: 0 auto;
 }
 
+/* Header partagé des pages : même alignement vertical du menu */
+.page-header {
+	position: relative;
+	z-index: 2;
+	width: min(1160px, calc(100% - 64px));
+	margin: 26px auto 0;
+}
+
+/* Menu principal de la page d'accueil */
 .main-menu {
 	position: relative;
 	z-index: 1;
-	margin-top: 26px;
 	padding: 18px 30px;
 	justify-content: center;
 	gap: clamp(28px, 6vw, 82px);
@@ -237,30 +307,33 @@
 	}
 }
 
-/* Lore page */
+/* =========================
+   PAGE LORE
+   ========================= */
+
+/* Page Lore : fond galaxie et dégradé sombre */
 .lore-page {
 	min-height: 100vh;
-	background: #050912;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	background: linear-gradient(180deg, rgba(3, 6, 16, 0.5), rgba(3, 6, 16, 0.2) 35%, rgba(3, 6, 16, 0.92)), url('galaxy.jpg') center / cover no-repeat;
 }
 
-.lore-header,
-.vixy-header,
-.system-header {
-	padding-top: 0;
-	background: transparent;
+.site-header::after {
+	z-index: 0;
+	pointer-events: none;
+	background: radial-gradient(circle at 50% 48%, rgba(123, 184, 255, 0.15), transparent 31%), linear-gradient(90deg, rgba(2, 7, 17, 0.54), transparent 50%, rgba(2, 7, 17, 0.36));
 }
 
-.lore-header .main-menu,
-.vixy-header .main-menu,
-.system-header .main-menu {
-	margin-top: 26px;
-}
 
+/* Entête de la page lore : titre et intro en haut de page */
 .lore-header {
 	position: relative;
 	min-height: 360px;
+	padding-top: 0;
 	padding-bottom: 70px;
-	background: linear-gradient(180deg, rgba(3, 6, 16, 0.18), rgba(3, 6, 16, 0.38) 36%, rgba(3, 6, 16, 0.94)), url('galaxy.png') center / cover no-repeat, url('galaxy.jpg') center / cover no-repeat;
+	background: none;
 }
 
 .lore-header::after {
@@ -269,22 +342,19 @@
 	right: 0;
 	bottom: 0;
 	left: 0;
-	height: 140px;
-	background: linear-gradient(180deg, rgba(5, 9, 18, 0) 0%, rgba(5, 9, 18, 0.55) 36%, rgba(5, 9, 18, 1) 100%);
+	height: 180px;
+	background: linear-gradient(180deg, rgba(5, 9, 18, 0) 0%, rgba(5, 9, 18, 0.55) 35%, rgba(5, 9, 18, 1) 100%);
 	pointer-events: none;
+	z-index: 0;
 }
 
-.lore-header,
-.lore-header::after {
-	opacity: 1;
-}
-
+/* Bloc d'introduction de la page lore */
 .lore-intro {
 	position: relative;
 	z-index: 1;
 	width: min(1160px, calc(100% - 64px));
 	margin: 0 auto;
-	padding-top: 94px;
+	padding-top: 72px;
 }
 
 .lore-intro h1 {
@@ -307,7 +377,7 @@
 	z-index: 1;
 	width: min(1160px, calc(100% - 64px));
 	margin: 0 auto;
-	padding: 26px 0 80px;
+	padding: 36px 0 80px;
 }
 
 .dimension-section {
@@ -315,40 +385,47 @@
 }
 
 .dimension-section h2 {
-	margin: 0 0 20px;
+	margin: 0 0 22px;
 	color: #f4f7ff;
 	font-family: Georgia, 'Times New Roman', serif;
 	font-size: clamp(32px, 5vw, 56px);
 	line-height: 1.1;
 }
 
+/* Grille des dimensions connues */
 .dimension-grid {
 	display: grid;
 	grid-template-columns: repeat(2, minmax(0, 1fr));
 	gap: 22px;
+	width: 100%;
 }
 
+/* Cartes des dimensions */
 .dimension-card {
 	position: relative;
 	display: flex;
 	align-items: flex-end;
-	min-height: 220px;
+	width: 100%;
+	min-height: 430px;
 	padding: 22px 20px;
 	border: 1px solid rgba(218, 231, 255, 0.22);
 	border-radius: 4px;
 	color: #f4f7ff;
-	background: #0b1220;
+	background: rgba(9, 17, 34, 0.72);
 	text-decoration: none;
 	text-transform: uppercase;
 	overflow: hidden;
 	transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+	background-image: linear-gradient(180deg, rgba(8, 12, 22, 0.22), rgba(8, 12, 22, 0.82)), url('galaxy.jpg');
+	background-position: center;
+	background-size: cover;
 }
 
 .dimension-card::before {
 	content: '';
 	position: absolute;
 	inset: 0;
-	background: linear-gradient(180deg, rgba(3, 6, 16, 0.12) 20%, rgba(3, 6, 16, 0.85) 100%);
+	background: linear-gradient(180deg, rgba(3, 6, 16, 0.12) 12%, rgba(3, 6, 16, 0.78) 100%);
 }
 
 .dimension-card:hover,
@@ -368,28 +445,22 @@
 }
 
 .dimension-card--black {
-	background-image: linear-gradient(180deg, rgba(5, 9, 18, 0.1), rgba(5, 9, 18, 0.8)), url('space-dark.jpg');
-	background-position: center;
-	background-size: cover;
+	background-image: linear-gradient(180deg, rgba(3, 6, 16, 0.12), rgba(3, 6, 16, 0.8)), url('galaxy.jpg');
 }
 
 .dimension-card--astral {
-	background-image: linear-gradient(180deg, rgba(5, 9, 18, 0.18), rgba(5, 9, 18, 0.82)), url('astral.jpg');
-	background-position: center;
-	background-size: cover;
+	background-image: linear-gradient(180deg, rgba(31, 23, 58, 0.28), rgba(5, 9, 18, 0.82)), url('galaxy.jpg');
 }
 
 .dimension-card--incree {
-	min-height: 200px;
-	background-image: linear-gradient(180deg, rgba(5, 9, 18, 0.12), rgba(5, 9, 18, 0.82)), url('incree.jpg');
-	background-position: center;
-	background-size: cover;
+	background-image: linear-gradient(180deg, rgba(12, 10, 18, 0.18), rgba(5, 9, 18, 0.86)), url('galaxy.jpg');
 }
 
 .dimension-card label {
 	cursor: pointer;
 }
 
+/* Cartes des mondes connus */
 .worlds {
 	width: min(1160px, calc(100% - 64px));
 	margin: 24px auto 0;
@@ -398,6 +469,7 @@
 	gap: 22px;
 }
 
+/* Fiche d'un monde */
 .world-card {
 	position: relative;
 	min-height: 430px;
@@ -502,19 +574,25 @@
 	}
 }
 
-/* Vixy page */
+/* =========================
+   PAGE VIXY
+   ========================= */
+
+/* Fond de la page Vixy */
 .vixy-page {
 	min-height: 100vh;
 	background: linear-gradient(180deg, rgba(3, 6, 16, 0) 0, rgba(3, 6, 16, 0.42) 26px, #050912 100%), url('vixy.jpg') top center / cover no-repeat;
 	background-color: #050912;
 }
 
+/* Entête de la page Vixy */
 .vixy-header {
 	min-height: 440px;
 	padding-bottom: 80px;
 	background: transparent;
 }
 
+/* Titre principal de la page Vixy */
 .vixy-heading,
 .vixy-content {
 	width: min(1000px, calc(100% - 64px));
@@ -546,6 +624,7 @@
 	padding-bottom: 90px;
 }
 
+/* Bloc d'article / texte narratif de Vixy */
 .lore-article {
 	padding: clamp(26px, 5vw, 58px);
 	border: 1px solid rgba(218, 231, 255, 0.24);
@@ -644,6 +723,15 @@
 }
 
 /* Left-side category menu shared by Vixy and its lore pages. */
+/* =========================
+   PAGE SYSTÈME
+   ========================= */
+
+/* Fond de la page Système */
+.system-page {
+	background: #050912;
+}
+
 .vixy-content,
 .system-content {
 	display: grid;
@@ -652,6 +740,7 @@
 	gap: 28px;
 }
 
+/* Menu latéral de catégories pour Vixy et Système */
 .category-menu {
 	position: sticky;
 	top: 24px;
@@ -765,6 +854,7 @@
 	background: transparent;
 }
 
+/* Disposition du contenu de la page système */
 .system-content {
 	width: 100%;
 	margin: -60px 0 0;
@@ -790,6 +880,7 @@
 	font-size: clamp(34px, 5vw, 60px);
 }
 
+/* Panneaux d'information de la page système */
 .myrr-panel {
 	position: relative;
 	grid-column: 2;
@@ -1112,7 +1203,7 @@ body {
 	min-height: 680px;
 	position: relative;
 	isolation: isolate;
-	background: linear-gradient(180deg, rgba(7, 6, 20, 0.28) 0%, rgba(7, 6, 20, 0.7) 76%, var(--night) 100%), url('galaxy.png') center / cover no-repeat, url('galaxy.jpg') center / cover no-repeat;
+	background: linear-gradient(180deg, rgba(7, 6, 20, 0.28) 0%, rgba(7, 6, 20, 0.7) 76%, var(--night) 100%), url('galaxy.jpg') center / cover no-repeat;
 }
 
 .site-header::after {
@@ -1308,7 +1399,7 @@ main h2 {
 	display: flex;
 	flex-direction: column;
 	overflow: hidden;
-	background: linear-gradient(180deg, rgba(3, 6, 16, 0.5), rgba(3, 6, 16, 0.2) 35%, rgba(3, 6, 16, 0.92)), url('galaxy.png') center / cover no-repeat, url('galaxy.jpg') center / cover no-repeat;
+	background: linear-gradient(180deg, rgba(3, 6, 16, 0.5), rgba(3, 6, 16, 0.2) 35%, rgba(3, 6, 16, 0.92)), url('galaxy.jpg') center / cover no-repeat;
 }
 
 .site-header::after {
