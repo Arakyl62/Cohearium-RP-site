@@ -1,73 +1,59 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Cohearium | Lore</title>
-	<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cohearium | Lore</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="lore-page">
-	<header class="page-header">
-		<nav class="main-menu" aria-label="Menu principal">
-			<a href="index.html">Accueil</a>
-			<a class="active" href="lore.html" aria-current="page">Lore</a>
-			<a href="roleplay.html">Roleplay</a>
-			<a href="communaute.html">Communauté</a>
-		</nav>
-	</header>
+    <header class="lore-header">
+        <div class="page-header">
+            <nav class="main-menu" aria-label="Menu principal">
+                <a href="index.html">Accueil</a>
+                <a class="active" href="lore.html">Lore</a>
+                <a href="roleplay.html">Roleplay</a>
+                <a href="communaute.html">Communauté</a>
+            </nav>
+        </div>
 
-	<header class="lore-header">
-		<div class="lore-intro">
-			<p class="hero-kicker">Les archives de Cohearium</p>
-			<h1>Les mondes connus.</h1>
-			<p>Le Cohearium s'ouvre à vous.</p>
-		</div>
-	</header>
-
-	<main class="lore-content" aria-label="Univers disponibles">
-		<div class="worlds">
-			<article class="world-card">
-				<img src="hexaria.jpg" alt="Découvrir l'univers Hexaria">
-				<span class="world-card-overlay"></span>
-				<span class="world-card-content">
-					<span class="world-number">01 / L'UNIVERS VOUS OBSERVE</span>
-					<strong>Hexaria</strong>
-					<span class="world-link">Ouvrir les archives <span aria-hidden="true">↗</span></span>
-				</span>
-			</article>
-
-			<a class="world-card" href="vixy.html">
-				<img src="vixy.jpg" alt="Découvrir l'univers Vixy">
-				<span class="world-card-overlay"></span>
-				<span class="world-card-content">
-					<span class="world-number">02 / AFFRONTEZ LA DEFAITE</span>
-					<strong>Vixy</strong>
-					<span class="world-link">Ouvrir les archives <span aria-hidden="true">↗</span></span>
-				</span>
-			</a>
-		</div>
-
-		<section class="dimension-section" aria-labelledby="dimensions-title">
-			<h2 id="dimensions-title">Dimensions connues</h2>
-			<div class="dimension-grid">
-				<a class="dimension-card dimension-card--black" href="#" aria-label="La dimension noire">
-					<span>La dimension noire</span>
-				</a>
-				<a class="dimension-card dimension-card--astral" href="#" aria-label="Le monde astral">
-					<span>Le monde astral</span>
-				</a>
-			</div>
-		</section>
-
-		<section class="dimension-section" aria-labelledby="beyond-title">
-			<h2 id="beyond-title">Au delà</h2>
-			<div class="dimension-grid">
-				<a class="dimension-card dimension-card--incree" href="#" aria-label="L'Incréé">
-					<span>L'Incréé</span>
-				</a>
-			</div>
-		</section>
-	</main>
+        <div class="lore-hero" aria-label="Bannière du lore">
+            <div class="lore-hero-inner">
+                <p class="lore-kicker">Regards sur le</p>
+                <h1 class="lore-title">Lore</h1>
+            </div>
+            <main class="lore-content">
+                <h2 class="lore-section-title">Les mondes</h2>
+                <div class="lore-cards">
+                    <a class="card hexaria-card" href="hexaria.html" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir Hexaria">
+                        <span class="card-label">Hexaria</span>
+                        <p class="lore-kicker">Ce que l'homme imagine existe.</p>
+                    </a>
+                    <a class="card vixy-card" href="vixy.html" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir Vixy">
+                        <span class="card-label">Vixy</span>
+                        <p class="lore-kicker">Battez-vous pour la défaite.</p>
+                    </a>
+                </div>
+                <h2 class="lore-section-title">Plans parallèles</h2>
+                <div class="lore-cards">
+                    <a class="card dark-world-card" href="dark-world.html" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir le Monde Sombre">
+                        <span class="card-label">Dimension noire</span>
+                        <p class="lore-kicker">Les rêves se réalisent dans l'ombre.</p>
+                    </a>
+                    <a class="card astral-world-card" href="astral-world.html" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir le Monde Astral">
+                        <span class="card-label">Le Monde Astral</span>
+                        <p class="lore-kicker">L'espace des rêves.</p>
+                    </a>
+                </div>
+                <h2 class="lore-section-title">Au delà du réel</h2>
+                <div class="lore-cards">
+                    <a class="card incréé-card" href="incréé.html" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir le Monde Oublié">
+                        <span class="card-label">Incréé</span>
+                        <p class="lore-kicker">Là où les histoires se perdent.</p>
+                    </a>
+            </main>
+        </div>
+    </header>
 </body>
 </html>

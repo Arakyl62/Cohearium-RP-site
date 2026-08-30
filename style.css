@@ -14,13 +14,14 @@
 /* RÃ©initialisation des marges et du fond de page */
 html, body {
 	margin: 0;
+	padding: 0;
 }
 html {
 	overflow-y: scroll;
 }
 /* Fond de page sombre pour toutes les pages */
 body {
-	background: #050912;
+	background: rgba(3, 6, 16, 1);
 }
 
 /* =========================
@@ -78,12 +79,14 @@ body {
 
 /* Surbrillance du lien actif ou survolé : couleur et ombre */
 .main-menu a:hover,
+.main-menu a:focus-visible,
 .main-menu a.active {
 	color: #f4f7ff;
 	text-shadow: 0 0 16px rgba(169, 216, 255, 0.8);
 }
 
 .main-menu a:hover::after,
+.main-menu a:focus-visible::after,
 .main-menu a.active::after {
 	transform: scaleX(1);
 }
@@ -113,7 +116,6 @@ body {
 	background: transparent;
 }
 
-
 /* =========================
    PAGE D'ACCUEIL
    ========================= */
@@ -131,7 +133,13 @@ body {
 .site-header::after {
 	z-index: 0;
 	pointer-events: none;
-	background: radial-gradient(circle at 50% 48%, rgba(123, 184, 255, 0.15), transparent 31%), linear-gradient(90deg, rgba(2, 7, 17, 0.54), transparent 50%, rgba(2, 7, 17, 0.36));
+	background: radial-gradient(
+		circle at 50% 48%, 
+		rgba(123, 184, 255, 0.15), 
+		transparent 31%), 
+		linear-gradient(90deg, rgba(2, 7, 17, 0.54), 
+		transparent 50%, 
+		rgba(2, 7, 17, 0.36));
 }
 
 /* Hero de la page d'accueil : fond galaxie + titre principal */
@@ -357,3 +365,179 @@ body {
 		min-width: 0;
 	}
 }
+
+/* =========================
+   PAGE LORE
+   ========================= */
+
+   /* Hero de la page lore : fond galaxie + titre principal */
+.lore-header {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	overflow: visible;
+	background:
+		linear-gradient(
+			180deg,
+			rgba(3, 6, 16, 0.5) 0%,
+			rgba(3, 6, 16, 0.32) 12%,
+			rgba(3, 6, 16, 0.82) 38%,
+			rgba(3, 6, 16, 1) 50%,
+			rgba(3, 6, 16, 1) 100%
+		),
+		url('galaxy.jpg') center / cover no-repeat;
+}
+
+.lore-hero::after {
+	z-index: 0;
+	pointer-events: none;
+	background: radial-gradient(
+		circle at 50% 48%,
+		rgba(123, 184, 255, 0.15), 
+		transparent 31%), 
+		linear-gradient(90deg, rgba(2, 7, 17, 0.54), 
+		transparent 50%, 
+		rgba(2, 7, 17, 0.36)
+	);
+}
+
+.lore-hero {
+	position: relative;
+	min-height: 420px;
+	padding: 76px 0 120px;
+}
+
+.lore-hero-inner {
+	position: relative;
+	z-index: 1;
+	width: min(1160px, calc(100% - 64px));
+	margin: 0 auto;
+}
+
+.lore-kicker {
+	margin: 0 0 12px;
+	color: #a9d8ff;
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.26em;
+	text-transform: uppercase;
+}
+
+.lore-title {
+	margin: 30px 0;
+	color: #dde0e9;
+	font-family: Georgia, 'Times New Roman', serif;
+	font-size: clamp(44px, 8vw, 90px);
+	font-weight: 800;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	text-shadow: 0 0 14px rgba(244, 247, 255, 0.45),
+                 0 0 48px rgba(128, 194, 255, 0.38);
+}
+
+.lore-content {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	width: min(1160px, calc(100% - 64px));
+	margin: 0 auto;
+	padding: 24px 0 80px;
+}
+
+.lore-section-title {
+	margin: 0 0 20px;
+	color: #edf4ff;
+	font-family: Georgia, 'Times New Roman', serif;
+	font-size: clamp(28px, 4vw, 46px);
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	text-shadow: 0 0 14px rgba(244, 247, 255, 0.45),
+                 0 0 48px rgba(128, 194, 255, 0.38);
+}
+
+/* Carte Hexaria : style spécifique */
+.card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-end;
+	width: min(42vw, 500px);
+	height: clamp(260px, 36vw, 420px);
+	padding: 24px;
+	border: 1px solid rgba(218, 231, 255, 0.28);
+	border-radius: 18px;
+	box-shadow: 0 0 26px rgba(125, 164, 255, 0.18);
+	text-decoration: none;
+	transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+
+.hexaria-card {
+	background: linear-gradient(
+		180deg, 
+		rgba(3, 6, 16, 0.5), 
+		rgba(3, 6, 16, 0.2) 35%, 
+		rgba(3, 6, 16, 0.99) 100%), 
+		url('hexaria.jpg') center / cover no-repeat;
+}
+
+.vixy-card {
+	background: linear-gradient(
+		180deg, 
+		rgba(3, 6, 16, 0.5), 
+		rgba(3, 6, 16, 0.2) 35%, 
+		rgba(3, 6, 16, 0.99) 100%), 
+		url('vixy.jpg') center / cover no-repeat;
+}
+
+.dark-world-card {
+	background: linear-gradient(
+		180deg, 
+		rgba(3, 6, 16, 0.5), 
+		rgba(3, 6, 16, 0.2) 35%, 
+		rgba(3, 6, 16, 0.99) 100%), 
+		url('dark-world.jpg') center / cover no-repeat;
+}
+
+.astral-world-card {
+	background: linear-gradient(
+		180deg, 
+		rgba(3, 6, 16, 0.5), 
+		rgba(3, 6, 16, 0.2) 35%, 
+		rgba(3, 6, 16, 0.99) 100%), 
+		url('astral-world.jpg') center / cover no-repeat;
+}
+
+.incréé-card {
+	background: linear-gradient(
+		180deg, 
+		rgba(3, 6, 16, 0.5), 
+		rgba(3, 6, 16, 0.2) 35%, 
+		rgba(3, 6, 16, 0.99) 100%), 
+		url('incréé.jpg') center / cover no-repeat;
+}
+
+.card:hover,
+.card:focus-visible {
+	transform: translateY(-3px);
+	border-color: rgba(169, 216, 255, 0.7);
+	box-shadow: 0 0 28px rgba(125, 164, 255, 0.28);
+}
+
+.card-label {
+	color: #ffffff;
+	font-size: 22px;
+	font-weight: 700;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	text-shadow: 0 0 18px rgba(0, 0, 0, 0.45);
+}
+
+/* Placement des cartes */
+.lore-cards {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+/* Boutons */
