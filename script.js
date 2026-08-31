@@ -34,8 +34,8 @@ if (myrrDropdown && myrrBar) {
 }
 
 /* ouverture progressive des panels Myrr */
-document.querySelectorAll('.myrr-panel').forEach(panel => {
-    const content = panel.querySelector('.myrr-panel-content');
+document.querySelectorAll('.panel').forEach(panel => {
+    const content = panel.querySelector('.panel-content');
 
     panel.querySelector('summary').addEventListener('click', event => {
         event.preventDefault();

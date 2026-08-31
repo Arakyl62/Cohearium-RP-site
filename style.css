@@ -625,7 +625,7 @@ body {
 .vixy-content h1 {
 	margin: 0;
 	font-family: Georgia, 'Times New Roman', serif;
-	font-size: clamp(44px, 8vw, 92px);
+	font-size: clamp(44px, 8vw, 78px);
 	line-height: 0.9;
 	letter-spacing: 0.08em;
 	text-transform: uppercase;
@@ -657,10 +657,11 @@ body {
    PAGE SYSTEME
    ========================= */
 
-.myrr-panel {
+.panel {
 	position: relative;
 	grid-column: 2;
 	min-width: 0;
+	margin-bottom: 20px;
 	border: 1px solid rgba(169, 216, 255, 0.3);
 	border-radius: 4px;
 	background: rgba(7, 14, 28, 0.8);
@@ -669,11 +670,74 @@ body {
 	overflow: hidden;
 }
 
+.panel:not(:last-child) {
+    margin-bottom: 40px;
+}
+
+.panel summary {
+	position: relative;
+	z-index: 1;
+	padding: 24px 28px;
+	color: #f4f7ff;
+	font-family: Georgia, 'Times New Roman', serif;
+	font-size: clamp(24px, 3vw, 34px);
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	list-style: none;
+	cursor: pointer;
+}
+
+.panel summary::-webkit-details-marker {
+	display: none;
+}
+
+.panel summary::after {
+	content: '+';
+	float: right;
+	color: #a9d8ff;
+	font-family: 'Trebuchet MS', sans-serif;
+	font-size: 25px;
+	font-weight: 400;
+}
+
+.panel[open] summary::after {
+	content: '−';
+}
+
+.panel summary:hover,
+.panel summary:focus-visible {
+	text-shadow: 0 0 16px rgba(169, 216, 255, 0.75);
+}
+
+.panel-content {
+    position: relative;
+    z-index: 1;
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 28px;
+    border-top: 1px solid rgba(218, 231, 255, 0.14);
+    opacity: 0;
+    transition: max-height 400ms ease, opacity 250ms ease, padding 400ms ease;
+}
+
+.panel[open] .panel-content {
+    opacity: 1;
+    padding: 0 28px 28px;
+}
+
+.panel-content p {
+	margin: 22px 0 0;
+	color: #d6deec;
+	font-family: Georgia, 'Times New Roman', serif;
+	font-size: 17px;
+	line-height: 1.8;
+}
+
 .myrr-panel::before {
 	content: '';
 	position: absolute;
-	top: 0;
 	right: 0;
+	top: 0;
 	width: 230px;
 	height: 190px;
 	background: linear-gradient(
@@ -688,70 +752,32 @@ body {
 }
 
 .myrr-panel:hover::before,
-.myrr-panel[open]::before,
-.myrr-panel:focus-within::before {
+.myrr-panel[open]::before {
 	opacity: 0.8;
 }
 
-.myrr-panel summary {
-	position: relative;
-	z-index: 1;
-	padding: 24px 28px;
-	color: #f4f7ff;
-	font-family: Georgia, 'Times New Roman', serif;
-	font-size: clamp(24px, 3vw, 34px);
-	font-weight: 700;
-	letter-spacing: 0.04em;
-	list-style: none;
-	cursor: pointer;
+.armement-panel::before {
+	content: '';
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 230px;
+	height: 190px;
+	background: linear-gradient(
+		135deg,
+		rgba(5, 9, 18, 0.05), 
+		rgba(5, 9, 18, 0.92) 78%), 
+		url('armement.jpg') center / cover no-repeat;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 300ms ease;
+	mask-image: radial-gradient(ellipse at top right, black 0%, transparent 72%);
 }
 
-.myrr-panel summary::-webkit-details-marker {
-	display: none;
+.armement-panel:hover::before,
+.armement-panel[open]::before {
+	opacity: 0.8;
 }
-
-.myrr-panel summary::after {
-	content: '+';
-	float: right;
-	color: #a9d8ff;
-	font-family: 'Trebuchet MS', sans-serif;
-	font-size: 25px;
-	font-weight: 400;
-}
-
-.myrr-panel[open] summary::after {
-	content: '−';
-}
-
-.myrr-panel summary:hover,
-.myrr-panel summary:focus-visible {
-	text-shadow: 0 0 16px rgba(169, 216, 255, 0.75);
-}
-
-.myrr-panel-content {
-    position: relative;
-    z-index: 1;
-    max-height: 0;
-    overflow: hidden;
-    padding: 0 28px;
-    border-top: 1px solid rgba(218, 231, 255, 0.14);
-    opacity: 0;
-    transition: max-height 400ms ease, opacity 250ms ease, padding 400ms ease;
-}
-
-.myrr-panel[open] .myrr-panel-content {
-    opacity: 1;
-    padding: 0 28px 28px;
-}
-
-.myrr-panel-content p {
-	margin: 22px 0 0;
-	color: #d6deec;
-	font-family: Georgia, 'Times New Roman', serif;
-	font-size: 17px;
-	line-height: 1.8;
-}
-
 
 @media (max-width: 700px) {
 	.vixy-content,
@@ -761,11 +787,11 @@ body {
 		gap: 20px;
 	}
 
-	.myrr-article {
+	.article {
 		grid-column: auto;
 	}
 
-	.myrr-panel {
+	.panel {
 		grid-column: auto;
 	}
 
@@ -785,11 +811,11 @@ body {
 		padding: 0 0 70px;
 	}
 
-	.myrr-panel-content {
+	.panel-content {
 		padding: 0 20px 20px;
 	}
 
-	.myrr-panel-content p {
+	.panel-content p {
 		font-size: 16px;
 		line-height: 1.7;
 	}
