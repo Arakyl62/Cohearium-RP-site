@@ -22,3 +22,49 @@ const sectionObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.45 });
 
 sections.forEach((section) => sectionObserver.observe(section));
+
+const myrrDropdown = document.querySelector('.myrr-dropdown');
+const myrrBar = document.querySelector('.myrr-bar');
+
+if (myrrDropdown && myrrBar) {
+	myrrBar.addEventListener('click', () => {
+		const isOpen = myrrDropdown.classList.toggle('is-open');
+		myrrBar.setAttribute('aria-expanded', String(isOpen));
+	});
+}
+
+/* ouverture progressive des panels Myrr */
+document.querySelectorAll('.myrr-panel').forEach(panel => {
+    const content = panel.querySelector('.myrr-panel-content');
+
+    panel.querySelector('summary').addEventListener('click', event => {
+        event.preventDefault();
+
+        if (panel.open) {
+            content.style.maxHeight = content.scrollHeight + 'px';
+
+            requestAnimationFrame(() => {
+                content.style.maxHeight = '0px';
+                content.style.opacity = '0';
+                content.style.padding = '0 28px';
+            });
+
+            setTimeout(() => {
+                panel.open = false;
+            }, 400);
+
+        } else {
+            panel.open = true;
+
+            content.style.maxHeight = '0px';
+            content.style.opacity = '0';
+            content.style.padding = '0 28px';
+
+            requestAnimationFrame(() => {
+                content.style.maxHeight = content.scrollHeight + 'px';
+                content.style.opacity = '1';
+                content.style.padding = '0 28px 28px';
+            });
+        }
+    });
+});

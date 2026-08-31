@@ -472,6 +472,13 @@ body {
 	margin-bottom: 55px;
 }
 
+.card:hover,
+.card:focus-visible {
+	transform: translateY(-3px);
+	border-color: rgba(169, 216, 255, 0.7);
+	box-shadow: 0 0 28px rgba(125, 164, 255, 0.28);
+}
+
 .hexaria-card {
 	background: linear-gradient(
 		180deg, 
@@ -515,13 +522,6 @@ body {
 		rgba(3, 6, 16, 0.2) 35%, 
 		rgba(3, 6, 16, 0.99) 100%), 
 		url('incréé.jpg') center / cover no-repeat;
-}
-
-.card:hover,
-.card:focus-visible {
-	transform: translateY(-3px);
-	border-color: rgba(169, 216, 255, 0.7);
-	box-shadow: 0 0 28px rgba(125, 164, 255, 0.28);
 }
 
 .card-label {
@@ -568,6 +568,8 @@ body {
 	align-items: start;
 }
 
+
+/* menu vertical - Vixy */
 .side-menu {
 	position: sticky;
 	top: 32px;
@@ -601,6 +603,7 @@ body {
 	box-shadow: inset 0 0 0 1px rgba(169, 216, 255, 0.24);
 }
 
+/* style paragraphe et titre de la page vixy */
 .vixy-content {
 	padding: 32px clamp(20px, 4vw, 46px) 28px;
 	border: 1px solid rgba(218, 231, 255, 0.16);
@@ -650,27 +653,144 @@ body {
 	margin: 0;
 }
 
-.quote {
-	padding: 12px 18px;
-	border-left: 2px solid rgba(169, 216, 255, 0.7);
-	background: rgba(144, 176, 255, 0.06);
-	color: #dfe9ff;
-	font-size: 1.2rem;
-	font-style: italic;
+/* =========================
+   PAGE SYSTEME
+   ========================= */
+
+.myrr-panel {
+	position: relative;
+	grid-column: 2;
+	min-width: 0;
+	border: 1px solid rgba(169, 216, 255, 0.3);
+	border-radius: 4px;
+	background: rgba(7, 14, 28, 0.8);
+	box-shadow: 0 18px 60px rgba(0, 0, 0, 0.3);
+	backdrop-filter: blur(10px);
+	overflow: hidden;
 }
 
-@media (max-width: 820px) {
-	.vixy-shell {
+.myrr-panel::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 230px;
+	height: 190px;
+	background: linear-gradient(
+		135deg, 
+		rgba(5, 9, 18, 0.05), 
+		rgba(5, 9, 18, 0.92) 78%), 
+		url('myrr.jpg') center / cover no-repeat;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 300ms ease;
+	mask-image: radial-gradient(ellipse at top right, black 0%, transparent 72%);
+}
+
+.myrr-panel:hover::before,
+.myrr-panel[open]::before,
+.myrr-panel:focus-within::before {
+	opacity: 0.8;
+}
+
+.myrr-panel summary {
+	position: relative;
+	z-index: 1;
+	padding: 24px 28px;
+	color: #f4f7ff;
+	font-family: Georgia, 'Times New Roman', serif;
+	font-size: clamp(24px, 3vw, 34px);
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	list-style: none;
+	cursor: pointer;
+}
+
+.myrr-panel summary::-webkit-details-marker {
+	display: none;
+}
+
+.myrr-panel summary::after {
+	content: '+';
+	float: right;
+	color: #a9d8ff;
+	font-family: 'Trebuchet MS', sans-serif;
+	font-size: 25px;
+	font-weight: 400;
+}
+
+.myrr-panel[open] summary::after {
+	content: '−';
+}
+
+.myrr-panel summary:hover,
+.myrr-panel summary:focus-visible {
+	text-shadow: 0 0 16px rgba(169, 216, 255, 0.75);
+}
+
+.myrr-panel-content {
+    position: relative;
+    z-index: 1;
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 28px;
+    border-top: 1px solid rgba(218, 231, 255, 0.14);
+    opacity: 0;
+    transition: max-height 400ms ease, opacity 250ms ease, padding 400ms ease;
+}
+
+.myrr-panel[open] .myrr-panel-content {
+    opacity: 1;
+    padding: 0 28px 28px;
+}
+
+.myrr-panel-content p {
+	margin: 22px 0 0;
+	color: #d6deec;
+	font-family: Georgia, 'Times New Roman', serif;
+	font-size: 17px;
+	line-height: 1.8;
+}
+
+
+@media (max-width: 700px) {
+	.vixy-content,
+	.system-content {
+		width: calc(100% - 32px);
 		grid-template-columns: 1fr;
+		gap: 20px;
 	}
 
-	.side-menu {
-		flex-direction: row;
-		flex-wrap: wrap;
-		justify-content: center;
+	.myrr-article {
+		grid-column: auto;
 	}
 
-	.side-menu a {
-		padding: 10px 12px;
+	.myrr-panel {
+		grid-column: auto;
+	}
+
+	.system-header {
+		min-height: 400px;
+		padding-bottom: 60px;
+	}
+
+	.system-page .vixy-heading {
+		width: 100%;
+		margin-left: 0;
+	}
+
+	.system-page .system-content {
+		width: calc(100% - 32px);
+		margin: -20px auto 0;
+		padding: 0 0 70px;
+	}
+
+	.myrr-panel-content {
+		padding: 0 20px 20px;
+	}
+
+	.myrr-panel-content p {
+		font-size: 16px;
+		line-height: 1.7;
 	}
 }
