@@ -25,7 +25,7 @@ body {
 }
 
 /* =========================
-   NAVIGATION GLOBALE - début
+   NAVIGATION GLOBALE
    ========================= */
 
 /* Bloc du header partagé : position du menu sur toutes les pages */
@@ -105,8 +105,54 @@ body {
 }
 
 /* =========================
-   NAVIGATION GLOBALE - fin
+   CARTES CARREES
    ========================= */
+
+.card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-end;
+	width: min(42vw, 500px);
+	height: clamp(260px, 36vw, 420px);
+	padding: 24px;
+	border: 1px solid rgba(218, 231, 255, 0.28);
+	border-radius: 18px;
+	box-shadow: 0 0 26px rgba(125, 164, 255, 0.18);
+	text-decoration: none;
+	transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+	margin-bottom: 55px;
+}
+
+/* =========================
+   CARTES TERRITOIRRES
+   ========================= */
+
+.territoire-card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-end;
+	width: min(28vw, 325px);
+	height: clamp(180px, 30vw, 280px);
+	padding: 24px;
+	border: 1px solid rgba(218, 231, 255, 0.28);
+	border-radius: 18px;
+	box-shadow: 0 0 26px rgba(125, 164, 255, 0.18);
+	text-decoration: none;
+	transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+	margin: 15px;
+}
+
+.territoire-card:hover,
+.territoire-card:focus-visible,
+.card:hover,
+.card:focus-visible {
+	transform: translateY(-3px);
+	border-color: rgba(169, 216, 255, 0.7);
+	box-shadow: 0 0 28px rgba(125, 164, 255, 0.28);
+}
+
 
 /* Entètes spécifiques aux pages : page lore, page vixy, page système */
 .lore-header,
@@ -115,6 +161,87 @@ body {
 	padding-top: 0;
 	background: transparent;
 }
+
+/* =========================
+   PANNEAUX DÉROULANTS
+   ========================= */
+
+.panel {
+	position: relative;
+	grid-column: 2;
+	min-width: 0;
+	margin-bottom: 20px;
+	border: 1px solid rgba(169, 216, 255, 0.3);
+	border-radius: 4px;
+	background: rgba(7, 14, 28, 0.8);
+	box-shadow: 0 18px 60px rgba(0, 0, 0, 0.3);
+	backdrop-filter: blur(10px);
+	overflow: hidden;
+}
+
+.panel:not(:last-child) {
+    margin-bottom: 40px;
+}
+
+.panel summary {
+	position: relative;
+	z-index: 1;
+	padding: 24px 28px;
+	color: #f4f7ff;
+	font-family: Georgia, 'Times New Roman', serif;
+	font-size: clamp(24px, 3vw, 34px);
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	list-style: none;
+	cursor: pointer;
+}
+
+.panel summary::-webkit-details-marker {
+	display: none;
+}
+
+.panel summary::after {
+	content: '+';
+	float: right;
+	color: #a9d8ff;
+	font-family: 'Trebuchet MS', sans-serif;
+	font-size: 25px;
+	font-weight: 400;
+}
+
+.panel[open] summary::after {
+	content: '−';
+}
+
+.panel summary:hover,
+.panel summary:focus-visible {
+	text-shadow: 0 0 16px rgba(169, 216, 255, 0.75);
+}
+
+.panel-content {
+    position: relative;
+    z-index: 1;
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 28px;
+    border-top: 1px solid rgba(218, 231, 255, 0.14);
+    opacity: 0;
+    transition: max-height 400ms ease, opacity 250ms ease, padding 400ms ease;
+}
+
+.panel[open] .panel-content {
+    opacity: 1;
+    padding: 0 28px 28px;
+}
+
+.panel-content p {
+	margin: 22px 0 0;
+	color: #d6deec;
+	font-family: Georgia, 'Times New Roman', serif;
+	font-size: 17px;
+	line-height: 1.8;
+}
+
 
 /* =========================
    PAGE D'ACCUEIL
@@ -455,30 +582,7 @@ body {
                  0 0 48px rgba(128, 194, 255, 0.38);
 }
 
-/* Carte Hexaria : style spécifique */
-.card {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: flex-end;
-	width: min(42vw, 500px);
-	height: clamp(260px, 36vw, 420px);
-	padding: 24px;
-	border: 1px solid rgba(218, 231, 255, 0.28);
-	border-radius: 18px;
-	box-shadow: 0 0 26px rgba(125, 164, 255, 0.18);
-	text-decoration: none;
-	transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
-	margin-bottom: 55px;
-}
-
-.card:hover,
-.card:focus-visible {
-	transform: translateY(-3px);
-	border-color: rgba(169, 216, 255, 0.7);
-	box-shadow: 0 0 28px rgba(125, 164, 255, 0.28);
-}
-
+/* Carte Lore : style spécifique */
 .hexaria-card {
 	background: linear-gradient(
 		180deg, 
@@ -625,7 +729,7 @@ body {
 .vixy-content h1 {
 	margin: 0;
 	font-family: Georgia, 'Times New Roman', serif;
-	font-size: clamp(44px, 8vw, 78px);
+	font-size: clamp(40px,7vw, 70px);
 	line-height: 0.9;
 	letter-spacing: 0.08em;
 	text-transform: uppercase;
@@ -656,82 +760,6 @@ body {
 /* =========================
    PAGE SYSTEME
    ========================= */
-
-.panel {
-	position: relative;
-	grid-column: 2;
-	min-width: 0;
-	margin-bottom: 20px;
-	border: 1px solid rgba(169, 216, 255, 0.3);
-	border-radius: 4px;
-	background: rgba(7, 14, 28, 0.8);
-	box-shadow: 0 18px 60px rgba(0, 0, 0, 0.3);
-	backdrop-filter: blur(10px);
-	overflow: hidden;
-}
-
-.panel:not(:last-child) {
-    margin-bottom: 40px;
-}
-
-.panel summary {
-	position: relative;
-	z-index: 1;
-	padding: 24px 28px;
-	color: #f4f7ff;
-	font-family: Georgia, 'Times New Roman', serif;
-	font-size: clamp(24px, 3vw, 34px);
-	font-weight: 700;
-	letter-spacing: 0.04em;
-	list-style: none;
-	cursor: pointer;
-}
-
-.panel summary::-webkit-details-marker {
-	display: none;
-}
-
-.panel summary::after {
-	content: '+';
-	float: right;
-	color: #a9d8ff;
-	font-family: 'Trebuchet MS', sans-serif;
-	font-size: 25px;
-	font-weight: 400;
-}
-
-.panel[open] summary::after {
-	content: '−';
-}
-
-.panel summary:hover,
-.panel summary:focus-visible {
-	text-shadow: 0 0 16px rgba(169, 216, 255, 0.75);
-}
-
-.panel-content {
-    position: relative;
-    z-index: 1;
-    max-height: 0;
-    overflow: hidden;
-    padding: 0 28px;
-    border-top: 1px solid rgba(218, 231, 255, 0.14);
-    opacity: 0;
-    transition: max-height 400ms ease, opacity 250ms ease, padding 400ms ease;
-}
-
-.panel[open] .panel-content {
-    opacity: 1;
-    padding: 0 28px 28px;
-}
-
-.panel-content p {
-	margin: 22px 0 0;
-	color: #d6deec;
-	font-family: Georgia, 'Times New Roman', serif;
-	font-size: 17px;
-	line-height: 1.8;
-}
 
 .myrr-panel::before {
 	content: '';
@@ -819,4 +847,49 @@ body {
 		font-size: 16px;
 		line-height: 1.7;
 	}
+}
+
+.nexora-card {
+	background: linear-gradient(
+		180deg, 
+		rgba(3, 6, 16, 0.5), 
+		rgba(3, 6, 16, 0.2) 35%, 
+		rgba(3, 6, 16, 0.99) 100%), 
+		url('nexora.jpg') center / cover no-repeat;
+}
+
+.peak-card {
+	background: linear-gradient(
+		180deg, 
+		rgba(3, 6, 16, 0.5), 
+		rgba(3, 6, 16, 0.2) 35%, 
+		rgba(3, 6, 16, 0.99) 100%), 
+		url('peak.jpg') center / cover no-repeat;
+}
+
+.traagh-card {
+	background: linear-gradient(
+		180deg, 
+		rgba(3, 6, 16, 0.5), 
+		rgba(3, 6, 16, 0.2) 35%, 
+		rgba(3, 6, 16, 0.99) 100%), 
+		url('traagh.jpg') center / cover no-repeat;
+}
+
+.corrin-card {
+	background: linear-gradient(
+		180deg, 
+		rgba(3, 6, 16, 0.5), 
+		rgba(3, 6, 16, 0.2) 35%, 
+		rgba(3, 6, 16, 0.99) 100%), 
+		url('corrin.jpg') center / cover no-repeat;
+}
+
+.djalaba-card {
+	background: linear-gradient(
+		180deg, 
+		rgba(3, 6, 16, 0.5), 
+		rgba(3, 6, 16, 0.2) 35%, 
+		rgba(3, 6, 16, 0.99) 100%), 
+		url('djalaba.jpg') center / cover no-repeat;
 }
