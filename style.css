@@ -91,19 +91,6 @@ body {
 	transform: scaleX(1);
 }
 
-@media (max-width: 700px) {
-	.main-menu {
-		padding: 14px 12px;
-		gap: 0;
-		justify-content: space-around;
-	}
-
-	.main-menu a {
-		font-size: 9px;
-		letter-spacing: 0.08em;
-	}
-}
-
 /* =========================
    CARTES CARREES
    ========================= */
@@ -461,71 +448,37 @@ body {
   font-weight: 300;
 }
 
-/* Texte secondaire de la page d'accueil : style spÃ©cifique */
-@media (max-width: 700px) {
-	.site-outro {
-		width: min(100% - 32px, 1160px);
-		padding: 24px 20px;
-	}
-	.main-menu,
-	.hero,
-	.content-section {
-		width: min(100% - 32px, 1160px);
-	}
-
-	.hero {
-		padding-top: 80px;
-	}
-
-	.hero h1 {
-		font-size: clamp(47px, 15vw, 90px);
-		letter-spacing: 0.07em;
-	}
-
-	.portal-actions {
-		width: 100%;
-		flex-direction: column;
-	}
-
-	.portal-button {
-		width: 100%;
-		min-width: 0;
-	}
-}
-
 /* =========================
    PAGE LORE
    ========================= */
 
-   /* Hero de la page lore : fond galaxie + titre principal */
-.lore-header {
+.lore-page {
 	min-height: 100vh;
-	display: flex;
-	flex-direction: column;
-	overflow: visible;
+	padding-bottom: 80px;
 	background:
-		linear-gradient(
-			180deg,
-			rgba(3, 6, 16, 0.5) 0%,
-			rgba(3, 6, 16, 0.32) 12%,
-			rgba(3, 6, 16, 0.82) 38%,
-			rgba(3, 6, 16, 1) 50%,
-			rgba(3, 6, 16, 1) 100%
-		),
-		url('galaxy.jpg') center / cover no-repeat;
+        linear-gradient(
+            180deg,
+            rgba(3, 6, 16, 0.5) 0%,
+            rgba(3, 6, 16, 0.32) 12%,
+            rgba(3, 6, 16, 0.82) 38%,
+            rgba(3, 6, 16, 1) 50%,
+            rgba(3, 6, 16, 1) 100%
+        ),
+		url('galaxy.jpg') center / cover no-repeat fixed;
+
 }
 
 .lore-hero::after {
-	z-index: 0;
-	pointer-events: none;
-	background: radial-gradient(
-		circle at 50% 48%,
-		rgba(123, 184, 255, 0.15), 
-		transparent 31%), 
-		linear-gradient(90deg, rgba(2, 7, 17, 0.54), 
-		transparent 50%, 
-		rgba(2, 7, 17, 0.36)
-	);
+    z-index: 0;
+    pointer-events: none;
+    background: radial-gradient(
+        circle at 50% 48%,
+        rgba(123, 184, 255, 0.15), 
+        transparent 31%), 
+        linear-gradient(90deg, rgba(2, 7, 17, 0.54), 
+        transparent 50%, 
+        rgba(2, 7, 17, 0.36)
+    );
 }
 
 .lore-hero {
@@ -572,14 +525,16 @@ body {
 }
 
 .lore-section-title {
-	margin: 0 0 20px;
-	color: #edf4ff;
+    display: flex;
+    justify-content: center;
+	padding: 0 0 24px;
+	color: #dde0e9;
 	font-family: Georgia, 'Times New Roman', serif;
 	font-size: clamp(28px, 4vw, 46px);
 	font-weight: 700;
 	letter-spacing: 0.04em;
-	text-shadow: 0 0 14px rgba(244, 247, 255, 0.45),
-                 0 0 48px rgba(128, 194, 255, 0.38);
+	text-shadow: 0 0 14px rgba(255, 0, 0, 0.6),
+                 0 0 48px rgba(255, 60, 0, 0.6);
 }
 
 /* Carte Lore : style spécifique */
@@ -807,48 +762,6 @@ body {
 	opacity: 0.8;
 }
 
-@media (max-width: 700px) {
-	.vixy-content,
-	.system-content {
-		width: calc(100% - 32px);
-		grid-template-columns: 1fr;
-		gap: 20px;
-	}
-
-	.article {
-		grid-column: auto;
-	}
-
-	.panel {
-		grid-column: auto;
-	}
-
-	.system-header {
-		min-height: 400px;
-		padding-bottom: 60px;
-	}
-
-	.system-page .vixy-heading {
-		width: 100%;
-		margin-left: 0;
-	}
-
-	.system-page .system-content {
-		width: calc(100% - 32px);
-		margin: -20px auto 0;
-		padding: 0 0 70px;
-	}
-
-	.panel-content {
-		padding: 0 20px 20px;
-	}
-
-	.panel-content p {
-		font-size: 16px;
-		line-height: 1.7;
-	}
-}
-
 .nexora-card {
 	background: linear-gradient(
 		180deg, 
@@ -964,7 +877,7 @@ body {
 
 
 /* =========================
-   IMAGE
+   IMAGE CARROUsEL
    ========================= */
 
 .lore-image {
@@ -1002,7 +915,7 @@ body {
 
 
 /* =========================
-   TEXTE
+   TEXTE CARROUSEL
    ========================= */
 
 .lore-content {
@@ -1051,7 +964,6 @@ body {
 	font-weight: 500;
 	line-height: 0.92;
 	letter-spacing: 0;
-	text-shadow: 0 5px 35px rgba(0, 0, 0, 0.32);
 }
 
 .lore-content p {
@@ -1083,7 +995,7 @@ body {
 
 
 /* =========================
-   NAVIGATION
+   CARROUSEL NAVIGATION
    ========================= */
 
 .lore-navigation {
@@ -1210,110 +1122,4 @@ body {
 .lore-thumbnail:focus-visible {
 	outline: 2px solid #f0c98b;
 	outline-offset: 3px;
-}
-
-@media (max-width: 650px) {
-	.page-header {
-		width: calc(100% - 32px);
-		margin-top: 16px;
-	}
-
-	.page-header .main-menu {
-		flex-wrap: wrap;
-		justify-content: center;
-		gap: 8px 16px;
-		padding: 12px 10px;
-	}
-
-	.page-header .main-menu a {
-		font-size: 8px;
-	}
-
-	.vixy-shell {
-		width: min(100% - 32px, 1180px);
-		grid-template-columns: minmax(0, 1fr);
-		gap: 14px;
-	}
-
-	.vixy-shell .side-menu {
-		position: static;
-		flex-direction: row;
-		gap: 4px;
-		overflow-x: auto;
-		padding: 8px;
-		scrollbar-width: none;
-	}
-
-	.vixy-shell .side-menu::-webkit-scrollbar {
-		display: none;
-	}
-
-	.vixy-shell .side-menu a {
-		flex: 0 0 auto;
-		padding: 10px 12px;
-	}
-
-	.vixy-content {
-		box-sizing: border-box;
-		width: 100%;
-		min-width: 0;
-	}
-
-	.lore-carousel {
-		width: 100%;
-		margin: 34px auto 0;
-	}
-
-	.lore-card {
-		min-height: 420px;
-    }
-
-	.lore-image::after {
-		background:
-			linear-gradient(90deg, rgba(4, 8, 15, 0.52), rgba(4, 8, 15, 0.03)),
-			linear-gradient(0deg, rgba(4, 8, 15, 0.88), transparent 74%);
-    }
-
-    .lore-content {
-		padding: 34px 24px 32px;
-	}
-
-	.lore-content h2 {
-		font-size: clamp(3rem, 15vw, 5rem);
-	}
-
-	.lore-content .lore-origin {
-		margin-top: 19px;
-	}
-
-	.lore-thumbnails {
-		grid-template-columns: repeat(5, minmax(76px, 1fr));
-		overflow-x: auto;
-		padding: 2px 1px 7px;
-		scrollbar-width: thin;
-		scrollbar-color: rgba(240, 201, 139, 0.5) transparent;
-	}
-
-	.lore-thumbnail {
-		height: 66px;
-	}
-
-	.lore-thumbnail span {
-		font-size: 9px;
-	}
-
-	.lore-navigation {
-		gap: 12px;
-    }
-
-}
-
-@media (prefers-reduced-motion: reduce) {
-	.lore-image img,
-	.lore-navigation button,
-	.lore-progress span,
-	.lore-thumbnail img,
-	.lore-thumbnail::after {
-		transition: none;
-	}
 }
